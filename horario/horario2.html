@@ -2,16 +2,16 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Horario y Gestión de Clases</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horario Adolescentes y Adultos</title>
   <style>
     body {
-      background: linear-gradient(to right, #ff9966, #ffcc66);
       font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff9966, #ffcc66);
       padding: 20px;
     }
 
-    h1, h2, h3 {
+    h1 {
       text-align: center;
       color: #fff;
       text-shadow: 1px 1px 3px #000;
@@ -27,8 +27,9 @@
       border: 1px solid #fff;
       text-align: center;
       padding: 10px;
-      font-size: 0.8em;
-      vertical-align: middle;
+      font-size: 0.9em;
+      font-weight: bold;
+      position: relative;
     }
 
     th {
@@ -36,30 +37,135 @@
       color: #fff;
     }
 
-    .form-section, .container-section {
+    .pink { background-color: #ffb6c1; }
+    .blue { background-color: #87cefa; }
+    .yellow { background-color: #ffd700; }
+    .orange { background-color: #ffa07a; }
+    .green { background-color: #90ee90; }
+    .red { background-color: #ff6347; }
+    .purple { background-color: #dda0dd; }
+    .lightblue { background-color: #afeeee; }
+    .white { background-color: #fff; }
+
+    .add-class-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .class-form {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
       background: #fff;
       padding: 20px;
       border-radius: 10px;
-      margin-top: 40px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      width: 300px;
     }
 
-    .calendar-table {
-      font-size: 0.85rem;
+    .class-form input, .class-form select {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
     }
 
-    .form-check-inline {
-      margin-right: 10px;
+    .form-buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .edit-btn {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      background: #000;
+      color: #fff;
+      font-size: 0.7em;
+      padding: 2px 5px;
+      cursor: pointer;
+      display: none;
+    }
+
+    td:hover .edit-btn {
+      display: block;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      z-index: 5;
     }
   </style>
 </head>
 <body>
 
   <h1>Horario Adolescentes y Adultos</h1>
+  <button class="add-class-btn" onclick="openForm()">Agregar Clase</button>
 
-  <table id="horario-dinamico">
+  <div class="overlay" id="overlay" onclick="closeForm()"></div>
+
+  <div class="class-form" id="classForm">
+    <h3 id="formTitle">Agregar Clase</h3>
+    <input type="text" id="className" placeholder="Nombre de la clase">
+    
+    <label>Días:</label>
+    <select id="classDays" multiple>
+      <option value="0">Lunes</option>
+      <option value="1">Martes</option>
+      <option value="2">Miércoles</option>
+      <option value="3">Jueves</option>
+      <option value="4">Viernes</option>
+      <option value="5">Sábado</option>
+    </select>
+
+    <input type="text" id="classTime" placeholder="Horario (ej. 4:00–5:00 PM)">
+    
+    <label>Maestro:</label>
+    <select id="teacherSelect"></select>
+    <input type="text" id="newTeacher" placeholder="Nuevo maestro (opcional)">
+    
+    <label>Categoría:</label>
+    <select id="category">
+      <option>Danza</option>
+      <option>Música</option>
+      <option>Artes Plásticas</option>
+    </select>
+
+    <label>Espacio:</label>
+    <select id="space">
+      <option>Salón Danza</option>
+      <option>Salón Música</option>
+      <option>Consultorio</option>
+    </select>
+
+    <label>Color:</label>
+    <input type="color" id="classColor">
+
+    <div class="form-buttons">
+      <button onclick="saveClass()">Guardar</button>
+      <button onclick="deleteClass()" id="deleteBtn" style="display:none;">Eliminar</button>
+      <button onclick="closeForm()">Cancelar</button>
+    </div>
+  </div>
+
+  <table id="scheduleTable">
     <thead>
       <tr>
-        <th>Hora</th>
         <th>Lunes</th>
         <th>Martes</th>
         <th>Miércoles</th>
@@ -68,267 +174,92 @@
         <th>Sábado</th>
       </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+      <tr>
+        <td class="white"></td>
+        <td class="white"></td>
+        <td class="white"></td>
+        <td class="white"></td>
+        <td class="white"></td>
+        <td class="white"></td>
+      </tr>
+    </tbody>
   </table>
 
-  <div class="container-section">
-    <h2>Gestión de Espacios y Clases</h2>
-
-    <div class="mb-3">
-      <button class="btn btn-primary" onclick="crearNuevoEspacio()">Crear nuevo espacio</button>
-    </div>
-
-    <div class="mb-3">
-      <label>Seleccionar espacio:</label>
-      <select id="espacios" class="form-select" onchange="actualizarCalendario()"></select>
-    </div>
-
-    <table class="table table-bordered calendar-table">
-      <thead>
-        <tr>
-          <th>Hora</th>
-          <th>Lunes</th>
-          <th>Martes</th>
-          <th>Miércoles</th>
-          <th>Jueves</th>
-          <th>Viernes</th>
-          <th>Sábado</th>
-        </tr>
-      </thead>
-      <tbody id="calendario-body"></tbody>
-    </table>
-  </div>
-
-  <div class="form-section">
-    <h3>Agregar Nueva Clase</h3>
-
-    <form id="claseForm" onsubmit="guardarClase(event)">
-      <div class="mb-3">
-        <label>Espacio:</label>
-        <select id="espacio" class="form-select"></select>
-      </div>
-
-      <div class="mb-3">
-        <label>Nombre de la clase:</label>
-        <input type="text" id="nombre" class="form-control" required>
-      </div>
-
-      <div class="mb-3">
-        <label>Maestro:</label>
-        <select id="maestro" class="form-select">
-          <option value="Lucía">Lucía</option>
-        </select>
-        <button type="button" class="btn btn-link" onclick="agregarMaestro()">Agregar nuevo maestro</button>
-        <input type="text" id="nuevoMaestro" class="form-control mt-2 d-none" placeholder="Nombre del nuevo maestro">
-      </div>
-
-      <div class="mb-3">
-        <label>Días:</label><br>
-        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Lunes">Lunes</div>
-        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Martes">Martes</div>
-        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Miércoles">Miércoles</div>
-        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Jueves">Jueves</div>
-        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Viernes">Viernes</div>
-        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="Sábado">Sábado</div>
-      </div>
-
-      <div class="mb-3">
-        <label>Hora Inicio:</label>
-        <input type="time" id="inicio" class="form-control" required>
-        <label>Hora Fin:</label>
-        <input type="time" id="fin" class="form-control" required>
-      </div>
-
-      <button type="submit" class="btn btn-success">Guardar Clase</button>
-    </form>
-  </div>
-
   <script>
-    const horas = [];
-    for (let h = 9; h < 21; h++) {
-      horas.push(`${String(h).padStart(2, '0')}:00`);
-      horas.push(`${String(h).padStart(2, '0')}:30`);
-    }
+    let currentEditCell = null;
+    const teacherSelect = document.getElementById('teacherSelect');
+    const teachers = ["Maestro A", "Maestro B"];
+    const form = document.getElementById("classForm");
 
-    function agregarMaestro() {
-      document.getElementById('nuevoMaestro').classList.remove('d-none');
-    }
+    function openForm(cell = null) {
+      document.getElementById('overlay').style.display = 'block';
+      form.style.display = 'block';
+      currentEditCell = cell;
 
-    function cargarClases() {
-      const data = localStorage.getItem("clases");
-      return data ? JSON.parse(data) : {};
-    }
-
-    function guardarClases(data) {
-      localStorage.setItem("clases", JSON.stringify(data));
-    }
-
-    function guardarClase(e) {
-      e.preventDefault();
-
-      const espacio = document.getElementById("espacio").value;
-      const nombreClase = document.getElementById("nombre").value;
-      const maestroSelect = document.getElementById("maestro");
-      const nuevoMaestro = document.getElementById("nuevoMaestro").value;
-      const maestro = nuevoMaestro || maestroSelect.value;
-      const inicio = document.getElementById("inicio").value;
-      const fin = document.getElementById("fin").value;
-      const dias = Array.from(document.querySelectorAll("input[type='checkbox']:checked")).map(cb => cb.value);
-
-      const clasesData = cargarClases();
-      clasesData[espacio] = clasesData[espacio] || [];
-
-      const hayEmpalme = clasesData[espacio].some(clase =>
-        dias.some(dia =>
-          clase.dias.includes(dia) &&
-          !(fin <= clase.inicio || inicio >= clase.fin)
-        )
-      );
-
-      if (hayEmpalme) {
-        alert("❌ NO SE PUEDE AGREGAR CLASE: EMPALME DETECTADO");
-        return;
-      }
-
-      clasesData[espacio].push({ nombre: nombreClase, maestro, dias, inicio, fin });
-      guardarClases(clasesData);
-
-      alert("✅ Clase agregada exitosamente");
-      actualizarEspacios();
-      actualizarCalendario();
-      pintarHorarioColorido();
-    }
-
-    function crearNuevoEspacio() {
-      const nombre = prompt("Nombre del nuevo espacio:");
-      if (nombre) {
-        const clases = cargarClases();
-        clases[nombre] = [];
-        guardarClases(clases);
-        actualizarEspacios();
-      }
-    }
-
-    function actualizarEspacios() {
-      const selectEspacios = document.getElementById("espacios");
-      const selectFormulario = document.getElementById("espacio");
-      const clases = cargarClases();
-
-      selectEspacios.innerHTML = "";
-      selectFormulario.innerHTML = "";
-
-      for (const espacio in clases) {
-        const option1 = document.createElement("option");
-        option1.value = espacio;
-        option1.textContent = espacio;
-        selectEspacios.appendChild(option1);
-
-        const option2 = document.createElement("option");
-        option2.value = espacio;
-        option2.textContent = espacio;
-        selectFormulario.appendChild(option2);
-      }
-    }
-
-    function actualizarCalendario() {
-      const espacio = document.getElementById("espacios").value;
-      const tbody = document.getElementById("calendario-body");
-      tbody.innerHTML = "";
-
-      const clases = cargarClases();
-      const clasesDelEspacio = clases[espacio] || [];
-
-      horas.forEach(hora => {
-        const row = document.createElement("tr");
-        const th = document.createElement("th");
-        th.textContent = hora;
-        row.appendChild(th);
-
-        const dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-        dias.forEach(dia => {
-          const td = document.createElement("td");
-          const clase = clasesDelEspacio.find(c =>
-            c.dias.includes(dia) && hora >= c.inicio && hora < c.fin
-          );
-          td.textContent = clase ? clase.nombre : "";
-          row.appendChild(td);
+      if (cell) {
+        document.getElementById('formTitle').innerText = "Editar Clase";
+        document.getElementById('deleteBtn').style.display = 'inline-block';
+        const info = JSON.parse(cell.dataset.info);
+        document.getElementById('className').value = info.name;
+        document.getElementById('classTime').value = info.time;
+        document.getElementById('classColor').value = info.color;
+        document.getElementById('category').value = info.category;
+        document.getElementById('space').value = info.space;
+        document.getElementById('teacherSelect').value = info.teacher;
+        [...document.getElementById('classDays').options].forEach(opt => {
+          opt.selected = info.days.includes(+opt.value);
         });
+      } else {
+        form.reset();
+        document.getElementById('formTitle').innerText = "Agregar Clase";
+        document.getElementById('deleteBtn').style.display = 'none';
+      }
 
-        tbody.appendChild(row);
+      updateTeacherOptions();
+    }
+
+    function closeForm() {
+      document.getElementById('overlay').style.display = 'none';
+      form.style.display = 'none';
+      currentEditCell = null;
+    }
+
+    function updateTeacherOptions() {
+      teacherSelect.innerHTML = teachers.map(t => `<option value="${t}">${t}</option>`).join("");
+    }
+
+    function saveClass() {
+      const name = document.getElementById('className').value;
+      const time = document.getElementById('classTime').value;
+      const days = [...document.getElementById('classDays').selectedOptions].map(opt => +opt.value);
+      const teacher = document.getElementById('newTeacher').value || document.getElementById('teacherSelect').value;
+      const category = document.getElementById('category').value;
+      const space = document.getElementById('space').value;
+      const color = document.getElementById('classColor').value;
+
+      if (!name || !time || days.length === 0) return alert("Faltan datos");
+
+      if (!teachers.includes(teacher)) teachers.push(teacher);
+
+      days.forEach(day => {
+        const cell = document.querySelector(`#scheduleTable tbody tr td:nth-child(${day + 1})`);
+        cell.innerHTML = `<div class="edit-btn" onclick="event.stopPropagation(); openForm(this.parentElement)">Editar</div>${time}<br>${name}`;
+        cell.style.backgroundColor = color;
+        cell.dataset.info = JSON.stringify({ name, time, teacher, color, days, category, space });
       });
 
-      pintarHorarioColorido();
+      closeForm();
     }
 
-    function pintarHorarioColorido() {
-      const espacio = document.getElementById("espacios").value;
-      const tabla = document.querySelector("#horario-dinamico tbody");
-      tabla.innerHTML = "";
-
-      const clases = cargarClases();
-      const clasesDelEspacio = clases[espacio] || [];
-
-      const dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-
-      horas.forEach(hora => {
-        const row = document.createElement("tr");
-        const th = document.createElement("th");
-        th.textContent = hora;
-        row.appendChild(th);
-
-        dias.forEach(dia => {
-          const td = document.createElement("td");
-          const clase = clasesDelEspacio.find(c =>
-            c.dias.includes(dia) && hora >= c.inicio && hora < c.fin
-          );
-
-          if (clase) {
-            td.innerHTML = `<strong>${clase.nombre}</strong><br><small>${clase.maestro}</small>`;
-            td.style.backgroundColor = obtenerColor(clase.nombre);
-            td.style.color = "#000";
-            td.style.fontSize = "0.8em";
-          } else {
-            td.textContent = "";
-          }
-
-          row.appendChild(td);
-        });
-
-        tabla.appendChild(row);
-      });
-    }
-
-    function obtenerColor(nombre) {
-      const colores = {
-        "Piano": "#87cefa",
-        "Jazz": "#ffd700",
-        "Danza Contemporánea": "#ffd700",
-        "Ballet": "#dda0dd",
-        "Movimiento Acrobático": "#90ee90",
-        "Capoeira": "#ff6347",
-        "Acond. Dancístico": "#ffb6c1",
-        "Danza Urbana": "#90ee90",
-        "Arte Experimental": "#dda0dd",
-        "Dan Ser Escénico": "#afeeee",
-        "Acrodanza": "#ffa07a",
-      };
-
-      if (!colores[nombre]) {
-        const hash = Array.from(nombre).reduce((acc, char) => acc + char.charCodeAt(0), 0);
-        const r = (hash * 33) % 255;
-        const g = (hash * 77) % 255;
-        const b = (hash * 11) % 255;
-        return `rgb(${r},${g},${b})`;
+    function deleteClass() {
+      if (currentEditCell) {
+        currentEditCell.innerHTML = "";
+        currentEditCell.style.backgroundColor = "#fff";
+        currentEditCell.removeAttribute("data-info");
+        closeForm();
       }
-
-      return colores[nombre];
     }
-
-    window.onload = () => {
-      actualizarEspacios();
-      actualizarCalendario();
-    };
   </script>
-
 </body>
 </html>
