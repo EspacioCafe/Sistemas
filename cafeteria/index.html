@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cafetería Aroma</title>
+  <style>
+    body { font-family: Arial; margin: 0; padding: 0; background: #f8f4f0; }
+    header, section, footer { padding: 20px; }
+    h2 { border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+    .menu-item, .insumo, .actividad, .review, .receta { margin: 10px 0; }
+    .carousel { display: flex; overflow-x: auto; gap: 10px; }
+    .carousel img { width: 200px; border-radius: 8px; }
+    input, button, textarea, select { padding: 5px; margin: 5px 0; width: 100%; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Cafetería Aroma</h1>
+</header>
+
+<section id="carrusel">
+  <h2>Carrusel de Productos</h2>
+  <div class="carousel">
+    <img src="cafe1.jpg" alt="Café 1">
+    <img src="cafe2.jpg" alt="Café 2">
+    <img src="pastel1.jpg" alt="Pastel 1">
+  </div>
+</section>
+
+<section id="menu">
+  <h2>Menú</h2>
+  <div class="grid">
+    <div class="menu-item"><strong>Latte</strong><br><img src="latte.jpg" width="100"><br>$45</div>
+    <div class="menu-item"><strong>Capuccino</strong><br><img src="capuccino.jpg" width="100"><br>$40</div>
+  </div>
+</section>
+
+<section id="reseñas">
+  <h2>Reseñas</h2>
+  <div class="review">⭐⭐⭐⭐⭐ "¡El mejor café de la ciudad!"</div>
+  <div class="review">⭐⭐⭐⭐ "Muy buena atención y ambiente."</div>
+</section>
+
+<section id="catalogo">
+  <h2>Catálogo de Insumos</h2>
+  <div id="listaInsumos" class="grid"></div>
+  <input type="text" id="nuevoInsumo" placeholder="Nuevo insumo">
+  <input type="number" id="cantidadInsumo" placeholder="Cantidad">
+  <button onclick="agregarInsumo()">Agregar Insumo</button>
+</section>
+
+<section id="crear-receta">
+  <h2>Crear Receta</h2>
+  <textarea id="nombreReceta" placeholder="Nombre de la receta"></textarea>
+  <textarea id="insumosReceta" placeholder="Insumos necesarios (uno por línea: ej. Cafe:1)"></textarea>
+  <button onclick="crearReceta()">Verificar Receta</button>
+  <div id="resultadoReceta" class="receta"></div>
+</section>
+
+<section id="inventario">
+  <h2>Inventario Diario</h2>
+  <div id="inventarioDiario" class="grid"></div>
+</section>
+
+<section id="actividades">
+  <h2>Actividades Diarias</h2>
+  <ul id="listaActividades"></ul>
+  <input type="text" id="nuevaActividad" placeholder="Nueva actividad">
+  <button onclick="agregarActividad()">Agregar</button>
+</section>
+
+<footer>
+  <p>&copy; 2025 Cafetería Aroma</p>
+</footer>
+
+<script>
+  let inventario = {
+    'Cafe': 10,
+    'Leche': 5,
+    'Chocolate': 4
+  };
+
+  function renderInsumos() {
+    const lista = document.getElementById('listaInsumos');
+    lista.innerHTML = '';
+    for (let [key, val] of Object.entries(inventario)) {
+      lista.innerHTML += `<div class="insumo">${key}: ${val}</div>`;
+    }
+    document.getElementById('inventarioDiario').innerHTML = lista.innerHTML;
+  }
+
+  function agregarInsumo() {
+    const nombre = document.getElementById('nuevoInsumo').value.trim();
+    const cantidad = parseInt(document.getElementById('cantidadInsumo').value);
+    if (nombre && !isNaN(cantidad)) {
+      inventario[nombre] = (inventario[nombre] || 0) + cantidad;
+      renderInsumos();
+    }
+  }
+
+  function crearReceta() {
+    const insumos = document.getElementById('insumosReceta').value.split('\n');
+    let faltantes = [];
+    let recetaObj = {};
+    for (let i of insumos) {
+      let [nombre, cantidad] = i.split(':');
+      nombre = nombre.trim();
+      cantidad = parseInt(cantidad);
+      if (!inventario[nombre] || inventario[nombre] < cantidad) {
+        faltantes.push(`${nombre} (falta ${cantidad - (inventario[nombre] || 0)})`);
+      } else {
+        recetaObj[nombre] = cantidad;
+      }
+    }
+    const resultado = document.getElementById('resultadoReceta');
+    if (faltantes.length) {
+      resultado.innerHTML = `Faltan insumos:<br>${faltantes.join('<br>')}`;
+    } else {
+      resultado.innerHTML = 'Receta disponible:<br>' + JSON.st

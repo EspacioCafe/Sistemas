@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Punto de Venta - Cafetería</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #2d89ef;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1b5fbd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistema de Punto de Venta - Cafetería</h1>
+
+    <div class="section">
+        <h2>Agregar Proveedor</h2>
+        <label>Nombre:</label>
+        <input type="text" placeholder="Nombre del proveedor">
+        <label>Ubicación:</label>
+        <input type="text" placeholder="Ubicación">
+        <label>Horarios de atención:</label>
+        <input type="text" placeholder="Ej: Lunes a Viernes, 8:00 - 18:00">
+        <button>Guardar Proveedor</button>
+    </div>
+
+    <div class="section">
+        <h2>Agregar Insumo</h2>
+        <label>Foto:</label>
+        <input type="file">
+        <label>Descripción:</label>
+        <textarea placeholder="Descripción breve del insumo"></textarea>
+        <label>Proveedor:</label>
+        <select>
+            <option>Selecciona un proveedor</option>
+        </select>
+        <button>Agregar Insumo</button>
+    </div>
+
+    <div class="section">
+        <h2>Inventario</h2>
+        <p>Aquí se mostrarán los insumos disponibles (no implementado).</p>
+        <button>Actualizar Inventario</button>
+    </div>
+
+    <div class="section">
+        <h2>Agregar Receta</h2>
+        <label>Nombre de la receta:</label>
+        <input type="text">
+        <label>Descripción:</label>
+        <textarea></textarea>
+        <label>Seleccionar Insumos:</label>
+        <select multiple>
+            <option>Insumo 1</option>
+            <option>Insumo 2</option>
+        </select>
+        <button>Guardar Receta</button>
+    </div>
+
+    <div class="section">
+        <h2>Orden</h2>
+        <label>Seleccionar Recetas:</label>
+        <select multiple>
+            <option>Receta 1</option>
+            <option>Receta 2</option>
+        </select>
+        <label>Comentarios:</label>
+        <textarea></textarea>
+        <label>Tipo de entrega:</label>
+        <select>
+            <option>Barra</option>
+            <option>Entrega plataformas</option>
+            <option>Entrega danser</option>
+        </select>
+        <button>Enviar a Comanda</button>
+    </div>
+
+    <div class="section">
+        <h2>Comandas</h2>
+        <p>Aquí se mostrarán los pedidos activos (no implementado).</p>
+        <button>Completar Pedido</button>
+    </div>
+</body>
+</html>
