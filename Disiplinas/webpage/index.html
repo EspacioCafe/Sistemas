@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horario Espacio DanSer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top right, #fcb045, #fd1d1d, #833ab4);
+      color: #000;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      color: white;
+      font-size: 2em;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 30px 0 10px;
+      color: white;
+      font-size: 1.5em;
+    }
+
+    .schedule-container {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      padding: 20px;
+    }
+
+    .schedule {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border: 2px solid white;
+      background-color: white;
+    }
+
+    .schedule .header {
+      background-color: hotpink;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #fff;
+    }
+
+    .cell {
+      border: 1px solid #fff;
+      padding: 8px;
+      font-size: 0.9em;
+      text-align: center;
+    }
+
+    /* Colores por clase */
+    .danza-intermedia { background-color: #f4a261; }
+    .piano { background-color: #5dade2; }
+    .guitarra { background-color: #76d7c4; }
+    .tecnica-mixta { background-color: #48c9b0; }
+    .danza-basica { background-color: #f7dc6f; }
+    .jazz { background-color: #f1948a; }
+    .ballet { background-color: #ecb7f5; }
+    .escenico { background-color: #b2ebf2; }
+    .experimental { background-color: #bb8fce; }
+    .arte-terapia { background-color: #f48fb1; }
+    .danza-urbana { background-color: #aed581; }
+    .emociones { background-color: #ffcc80; }
+    .teatro { background-color: #ffe082; }
+    .creativa { background-color: #ffb74d; }
+    .intro-danza { background-color: #80deea; }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .schedule {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .schedule .header {
+        font-size: 0.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Espacio DanSer</h1>
+
+  <div class="schedule-container">
+
+    <!-- HORARIO ADOLESCENTES Y ADULTOS -->
+    <section>
+      <h2>Adolescentes y Adultos</h2>
+      <div class="schedule">
+        <div class="header">Hora/Día</div>
+        <div class="header">Lunes</div>
+        <div class="header">Martes</div>
+        <div class="header">Miércoles</div>
+        <div class="header">Jueves</div>
+        <div class="header">Viernes</div>
+
+        <!-- Fila 1 -->
+        <div class="header">12:30 - 2:00 PM</div>
+        <div></div><div></div><div></div><div></div>
+        <div class="cell danza-intermedia">Danza Contemporánea Intermedia</div>
+
+        <!-- Fila 2 -->
+        <div class="header">3:30 - 5:00 PM</div>
+        <div class="cell danza-intermedia">Danza Contemporánea Intermedia</div>
+        <div></div>
+        <div class="cell danza-intermedia">Danza Contemporánea Intermedia</div>
+        <div></div><div></div>
+
+        <!-- Fila 3 -->
+        <div class="header">4:00 - 5:00 PM</div>
+        <div></div><div></div>
+        <div class="cell guitarra">Guitarra</div>
+        <div></div>
+        <div class="cell guitarra">Guitarra</div>
+
+        <!-- Fila 4 -->
+        <div class="header">5:00 - 6:00 PM</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell tecnica-mixta">Piano y Técnica Mixta</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+
+        <!-- Fila 5 -->
+        <div class="header">6:00 - 7:00 PM</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+
+        <!-- Fila 6 -->
+        <div class="header">6:30 - 8:00 PM</div>
+        <div></div>
+        <div class="cell danza-basica">Danza Contemporánea Básica</div>
+        <div></div>
+        <div class="cell danza-basica">Danza Contemporánea Básica</div>
+        <div></div>
+
+        <!-- Fila 7 -->
+        <div class="header">6:00 - 7:30 PM</div>
+        <div class="cell jazz">Jazz</div>
+        <div></div>
+        <div class="cell jazz">Jazz</div>
+        <div></div>
+        <div></div>
+
+        <!-- Fila 8 -->
+        <div class="header">7:30 - 8:30 PM</div>
+        <div class="cell ballet">Ballet</div>
+        <div></div><div></div><div></div>
+        <div class="cell ballet">Ballet</div>
+
+        <!-- Fila 9 -->
+        <div class="header">7:00 - 9:00 PM</div>
+        <div></div><div></div>
+        <div class="cell experimental">Arte Experimental</div>
+        <div></div><div></div>
+
+        <!-- Fila 10 -->
+        <div class="header">8:00 - 10:00 PM</div>
+        <div></div>
+        <div class="cell escenico">Dan Ser Escénico</div>
+        <div></div>
+        <div class="cell escenico">Dan Ser Escénico</div>
+        <div></div>
+      </div>
+    </section>
+
+    <!-- HORARIO KIDS -->
+    <section>
+      <h2>Kids (6 – 11 años)</h2>
+      <div class="schedule">
+        <div class="header">Hora/Día</div>
+        <div class="header">Lunes</div>
+        <div class="header">Martes</div>
+        <div class="header">Miércoles</div>
+        <div class="header">Jueves</div>
+        <div class="header">Viernes</div>
+
+        <div class="header">4:00 - 5:00 PM</div>
+        <div></div>
+        <div class="cell arte-terapia">Arte Terapia</div>
+        <div class="cell guitarra">Guitarra</div>
+        <div class="cell arte-terapia">Arte Terapia</div>
+        <div class="cell danza-urbana">Danza Urbana y Guitarra</div>
+
+        <div class="header">5:00 - 6:00 PM</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+
+        <div class="header">6:00 - 7:00 PM</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+        <div class="cell piano">Piano</div>
+
+        <div class="header">6:00 - 7:30 PM</div>
+        <div class="cell jazz">Jazz</div>
+        <div class="cell jazz">Jazz</div>
+        <div></div><div></div><div></div>
+
+        <div class="header">7:00 - 8:00 PM</div>
+        <div></div><div></div><div></div><div></div>
+        <div class="cell experimental">Arte Experimental</div>
+      </div>
+
+      <div class="schedule">
+        <div class="header">Hora/Día</div>
+        <div class="header">Sábado</div>
+        <div class="header" colspan="5"></div>
+
+        <div class="header">10:30 - 11:30 AM</div>
+        <div class="cell emociones">Manejo de Emociones</div>
+        <div colspan="5"></div>
+
+        <div class="header">11:30 - 12:30 PM</div>
+        <div class="cell teatro">Teatro</div>
+        <div colspan="5"></div>
+
+        <div class="header">12:30 - 1:30 PM</div>
+        <div class="cell creativa">Danza Creativa</div>
+        <div colspan="5"></div>
+      </div>
+    </section>
+
+    <!-- HORARIO BABY -->
+    <section>
+      <h2>Baby (3 – 5 años)</h2>
+      <div class="schedule">
+        <div class="header">Hora/Día</div>
+        <div class="header">Lunes</div>
+        <div class="header">Martes</div>
+        <div class="header">Miércoles</div>
+        <div class="header">Jueves</div>
+        <div class="header">Viernes</div>
+
+        <div class="header">5:30 - 6:30 PM</div>
+        <div></div><div></div><div></div>
+        <div class="cell intro-danza">Intro a la Danza</div>
+        <div></div>
+
+        <div class="header">7:00 - 8:00 PM</div>
+        <div></div><div></div><div></div><div></div>
+        <div class="cell experimental">Arte Experimental</div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
