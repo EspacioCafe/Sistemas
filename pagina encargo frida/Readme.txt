@@ -28,20 +28,32 @@ Aquí, tu formación artística va de la mano de maestros apasionados y expertos
 
 para esta pagina web se ocupa tener
 Un acerca de nosostros 
+informacion de la compañia la academia y la cafeteria
 
 espacio dan Ser
-    una manera para mostrar fotos 
+    carrousel para mostrar 3 fotos
     un apartado de quienes somos
+        pedir speach de quienes somoas a fri
     un apartado para mostrar imagenes del ciclo pasado
+        cartas donde muestran el nombre del avento y la fecha
     una apartado para ver a todos los maestros
+        baner de los maestros
     una pagina por maestro con imagen y descripcion 
+        baner + descripcion flayer
     una descripcion de las clases disponibles
+        informacion sobre de que trata cada clase
     una pagina par ver los Horarios
+        calendarios de las clases
     una pagina para ver los costos
+        flayer de costos
 
 espacio cafe
     un pagina para ver el menu
+
     un pagina para ver las opciones de catering
+        pedir info a ana pau
     un pagina para ver los espacios de encuentro
+        fotos de los lugares para rentar mas info de CONTACTO
 
 una pagina para CONTACTO
+    redes sociales (posible footer)
