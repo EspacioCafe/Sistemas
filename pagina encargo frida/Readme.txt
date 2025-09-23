@@ -74,3 +74,17 @@ Capacitaciones
     common desktop widths are 1200-1920 pixels, 
     while mobile designs typically range from 320-375 pixels
     wide
+
+
+
+
+    --------------------------------------------------------------------
+    posible sistemas futuros
+
+    un sistma de inventarios
+
+    agrego productos
+    Editar productos
+    Eliminar productos 
+
+    
