@@ -31,29 +31,46 @@ Un acerca de nosostros
 informacion de la compañia la academia y la cafeteria
 
 espacio dan Ser
-    carrousel para mostrar 3 fotos
-    un apartado de quienes somos
+    carrousel para mostrar 3 fotos  ✓
+    un apartado de quienes somos    ✓
         pedir speach de quienes somoas a fri
-    un apartado para mostrar imagenes del ciclo pasado
+    un apartado para mostrar imagenes del ciclo pasado ✓
         cartas donde muestran el nombre del avento y la fecha
-    una apartado para ver a todos los maestros
+    una apartado para ver a todos los maestros ✓
         baner de los maestros
-    una pagina por maestro con imagen y descripcion 
+    una pagina por maestro con imagen y descripcion  ✓
         baner + descripcion flayer
-    una descripcion de las clases disponibles
+    una descripcion de las clases disponibles ✓
         informacion sobre de que trata cada clase
-    una pagina par ver los Horarios
+    una pagina par ver los Horarios ✓
         calendarios de las clases
-    una pagina para ver los costos
+    una pagina para ver los costos ✓
         flayer de costos
 
 espacio cafe
-    un pagina para ver el menu
+    un pagina para ver el menu ✓
 
-    un pagina para ver las opciones de catering
+    un pagina para ver las opciones de catering 
         pedir info a ana pau
-    un pagina para ver los espacios de encuentro
+    un pagina para ver los espacios de encuentro ✓ 
         fotos de los lugares para rentar mas info de CONTACTO
 
-una pagina para CONTACTO
+una pagina para CONTACTO 
     redes sociales (posible footer)
+
+pagina para tener un blog
+    el admin puede crear post
+    seria un post por pagina poco texto    
+    imagenes y texto
+
+Capacitaciones
+    pagina especialisada en la difucion de los servicios de capacitacion por parte de Dan ser
+        descipcion del tipo de capacitacion
+            o tipo de servicio a instituciones, escuelas o emperesas
+            valores y pilares fundamentales
+            mostar informacion de capaciotaciones pasadas
+                fotos de como se vivio ese evento
+        UNA SOLA PAGINA PARA TODO EL BLOQUE CAPACITACIONES
+    common desktop widths are 1200-1920 pixels, 
+    while mobile designs typically range from 320-375 pixels
+    wide
