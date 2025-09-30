@@ -50,7 +50,7 @@ espacio dan Ser
 espacio cafe
     un pagina para ver el menu ✓
 
-    un pagina para ver las opciones de catering 
+    un pagina para ver las opciones de catering ✓
         pedir info a ana pau
     un pagina para ver los espacios de encuentro ✓ 
         fotos de los lugares para rentar mas info de CONTACTO
@@ -64,13 +64,19 @@ pagina para tener un blog
     imagenes y texto
 
 Capacitaciones
-    pagina especialisada en la difucion de los servicios de capacitacion por parte de Dan ser
-        descipcion del tipo de capacitacion
-            o tipo de servicio a instituciones, escuelas o emperesas
-            valores y pilares fundamentales
-            mostar informacion de capaciotaciones pasadas
-                fotos de como se vivio ese evento
-        UNA SOLA PAGINA PARA TODO EL BLOQUE CAPACITACIONES
+    Pagina especializada en la difucion de los servicios de capacitacion por parte de Dan ser
+        Descipcion del tipo de capacitacion ✓
+            Tipo de servicio 
+                Instituciones
+                Escuelas 
+                Emperesas
+            Valores y pilares fundamentales ✓
+            Mostar informacion de capaciotaciones pasadas ✓
+                Fotos de como se vivio ese evento
+    UNA SOLA PAGINA PARA TODO EL BLOQUE CAPACITACIONES
+
+
+
     common desktop widths are 1200-1920 pixels, 
     while mobile designs typically range from 320-375 pixels
     wide
@@ -81,10 +87,14 @@ Capacitaciones
     --------------------------------------------------------------------
     posible sistemas futuros
 
-    un sistma de inventarios
+    un sistma de inventarios y ventas
 
     agrego productos
     Editar productos
     Eliminar productos 
+
+    contar productos
+    Entrada de productos
+    Salida de productos
 
     

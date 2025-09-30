@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Horario Espacio DanSer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #fcb69f, #ffecd2);
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      background-color: #fff;
+      border: 2px solid #333;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .tab-btn.active {
+      background-color: #333;
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 8px;
+      border: 1px solid #555;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+
+    #generate-report {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #222;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #report-output {
+      white-space: pre-wrap;
+      background-color: #f4f4f4;
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px dashed #999;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Horario Espacio DanSer</h1>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="adolescentes">Adolescentes y Adultos</button>
+    <button class="tab-btn" data-tab="kids">Kids (6–11 años)</button>
+    <button class="tab-btn" data-tab="baby">Baby (3–5 años)</button>
+  </div>
+
+  <!-- ADOLESCENTES Y ADULTOS -->
+  <div class="tab-content active" id="adolescentes">
+    <h2>Adolescentes y Adultos</h2>
+    <table>
+      <thead>
+        <tr><th>Clase</th><th>Día</th><th>Horario</th><th>Asistió Maestro</th><th>Asistieron Alumnos</th></tr>
+      </thead>
+      <tbody>
+        <!-- Lunes -->
+        <tr><td>Danza Contemporánea Intermedia</td><td>Lunes</td><td>3:30–5 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Lunes</td><td>5–6 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Lunes</td><td>6–7 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Jazz</td><td>Lunes</td><td>6–7:30 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Ballet</td><td>Lunes</td><td>7:30–8:30 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+
+        <!-- Martes -->
+        <tr><td>Piano</td><td>Martes</td><td>5–6 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Martes</td><td>6–7 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Danza Contemporánea Básica</td><td>Martes</td><td>6:30–8 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Dan Ser Escénico</td><td>Martes</td><td>8–10 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+
+        <!-- Miércoles -->
+        <tr><td>Danza Contemporánea Intermedia</td><td>Miércoles</td><td>3:30–5 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Guitarra</td><td>Miércoles</td><td>4–5 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano y Técnica Mixta</td><td>Miércoles</td><td>5–6 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Miércoles</td><td>6–7 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Jazz</td><td>Miércoles</td><td>6–7:30 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Arte Experimental</td><td>Miércoles</td><td>7–9 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+
+        <!-- Jueves -->
+        <tr><td>Piano</td><td>Jueves</td><td>5–6 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Jueves</td><td>6–7 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Danza Contemporánea Básica</td><td>Jueves</td><td>6:30–8 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Dan Ser Escénico</td><td>Jueves</td><td>8–10 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+
+        <!-- Viernes -->
+        <tr><td>Danza Contemporánea Intermedia</td><td>Viernes</td><td>12:30–2 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Guitarra</td><td>Viernes</td><td>4–5 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Viernes</td><td>5–6 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Viernes</td><td>6–7 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Ballet</td><td>Viernes</td><td>7:30–8:30 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- KIDS -->
+  <div class="tab-content" id="kids">
+    <h2>Kids (6–11 años)</h2>
+    <table>
+      <thead>
+        <tr><th>Clase</th><th>Día</th><th>Horario</th><th>Asistió Maestro</th><th>Asistieron Alumnos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Piano</td><td>Lunes</td><td>5–6 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Jazz</td><td>Lunes</td><td>6–7:30 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Arte Terapia</td><td>Martes</td><td>4–5 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Martes</td><td>5–6 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Martes</td><td>6–7 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Jazz</td><td>Miércoles</td><td>6–7:30 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Guitarra</td><td>Miércoles</td><td>4–5 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Miércoles</td><td>5–6 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Miércoles</td><td>6–7 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Arte Terapia</td><td>Jueves</td><td>4–5 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Jueves</td><td>5–6 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Jueves</td><td>6–7 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Danza Urbana y Guitarra</td><td>Viernes</td><td>4–5 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Viernes</td><td>5–6 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Piano</td><td>Viernes</td><td>6–7 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Arte Experimental</td><td>Viernes</td><td>7–8 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Manejo de Emociones</td><td>Sábado</td><td>10:30–11:30 am</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Teatro</td><td>Sábado</td><td>11:30–12:30 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Danza Creativa</td><td>Sábado</td><td>12:30–1:30 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BABY -->
+  <div class="tab-content" id="baby">
+    <h2>Baby (3–5 años)</h2>
+    <table>
+      <thead>
+        <tr><th>Clase</th><th>Día</th><th>Horario</th><th>Asistió Maestro</th><th>Asistieron Alumnos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Intro a la Danza</td><td>Jueves</td><td>5:30–6:30 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+        <tr><td>Arte Experimental</td><td>Viernes</td><td>7–8 pm</td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button id="generate-report">Generar Reporte</button>
+  <div id="report-output"></div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(b => b.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    document.getElementById('generate-report').addEventListener('click', () => {
+      let report = 'REPORTE DE ASISTENCIA:\n\n';
+      const sections = document.querySelectorAll('.tab-content');
+
+      sections.forEach(section => {
+        report += section.querySelector('h2').textContent + ':\n';
+        const rows = section.querySelectorAll('tbody tr');
+
+        rows.forEach(row => {
+          const cells = row.querySelectorAll('td');
+          const clase = cells[0].textContent;
+          const dia = cells[1].textContent;
+          const horario = cells[2].textContent;
+          const asistioMaestro = cells[3].querySelector('input').checked ? 'Sí' : 'No';
+          const asistioAlumnos = cells[4].querySelector('input').checked ? 'Sí' : 'No';
+          report += `Clase: ${clase} | Día: ${dia} | Hora: ${horario} | Maestro Asistió: ${asistioMaestro} | Alumnos Asistieron: ${asistioAlumnos}\n`;
+        });
+        report += '\n';
+      });
+
+      document.getElementById('report-output').textContent = report;
+    });
+  </script>
+
+</body>
+</html>

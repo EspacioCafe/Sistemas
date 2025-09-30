@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Horario Total Pass</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #ff7a18, #ffd65a, #ff85e0, #b2f7ef);
+      margin: 0;
+      padding: 20px;
+      color: #000;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      text-transform: uppercase;
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px #00000050;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    th, td {
+      border: 2px solid white;
+      padding: 20px 10px;
+      font-weight: bold;
+    }
+
+    th {
+      background: #ff1493;
+      color: white;
+      font-size: 1.1em;
+    }
+
+    /* Colores por clase */
+    .intermedia { background-color: #ffbb77; }
+    .basica { background-color: #ffe600; }
+    .jazz { background-color: #ff3399; color: white; }
+    .ballet { background-color: #d299ff; }
+    .guitarra { background-color: #a2e4ff; }
+    .tecnica { background-color: #50fdd6; }
+    .arte { background-color: #ffa9f9; }
+
+  </style>
+</head>
+<body>
+
+  <h1>Horario Total Pass</h1>
+
+  <table>
+    <tr>
+      <th>Lunes</th>
+      <th>Martes</th>
+      <th>Miércoles</th>
+      <th>Jueves</th>
+      <th>Viernes</th>
+    </tr>
+    <tr>
+      <td class="intermedia">3:30–5 PM<br>Danza Contemporánea Intermedia</td>
+      <td></td>
+      <td class="intermedia">3:30–5 PM<br>Danza Contemporánea Intermedia</td>
+      <td></td>
+      <td class="intermedia">12:30–2 PM<br>Danza Contemporánea Intermedia</td>
+    </tr>
+    <tr>
+      <td class="jazz">6–7:30 PM<br>Jazz</td>
+      <td class="basica">6:30–8 PM<br>Danza Contemporánea Básica</td>
+      <td class="guitarra">4–5 PM<br>Guitarra</td>
+      <td class="basica">6:30–8 PM<br>Danza Contemporánea Básica</td>
+      <td class="guitarra">4–5 PM<br>Guitarra</td>
+    </tr>
+    <tr>
+      <td class="ballet">7:30–8:30 PM<br>Ballet</td>
+      <td></td>
+      <td class="tecnica">5–6 PM<br>Técnica Mixta</td>
+      <td></td>
+      <td class="ballet">7:30–8:30 PM<br>Ballet</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="jazz">6–7:30 PM<br>Jazz</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="arte">7–9 PM<br>Arte Experimental</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+</body>
+</html>
